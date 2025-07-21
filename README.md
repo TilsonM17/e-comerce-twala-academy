@@ -11,3 +11,10 @@
    - Relatorios de vendas
    - Gerir Usuarios
    -
+
+
+---------------------
+Pacotes:
+ - "laravel/breeze"
+ - "livewire/livewire"
+   -> Olhar na documentação
