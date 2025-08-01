@@ -8,8 +8,7 @@ use Livewire\Component;
 class Home extends Component
 {
 
-
-    #[Layout('layouts.guest')]
+    #[Layout('layouts.client')]
     public function render()
     {
         return view('livewire.home');

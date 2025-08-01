@@ -5,13 +5,13 @@
   - Lista de desejo
   - Carrinho de compras
   - Checkout
+  - Listagem de produtos
 
 - Administrador
    - Cadastro de produtos
    - Relatorios de vendas
    - Gerir Usuarios
    -
-
 
 ---------------------
 Pacotes:
