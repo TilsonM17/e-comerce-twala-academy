@@ -6,7 +6,8 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\CategoryProducts;
 use App\Models\Product;
-use Filament\Forms;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -34,16 +35,47 @@ class ProductResource extends Resource
 
                 TextInput::make('price')
                     ->label('Preço')
+                    ->integer()
+                    ->suffix('Kz')
                     ->required(),
 
-                Select::make('type')
-                ->options(CategoryProducts::all()->pluck('name', 'id'))
-                    ->label('Tipo de Produto')
+                Select::make('category_id')
+                    ->options(CategoryProducts::all()->pluck('name', 'id'))
+                    ->label('Categoria de Produto')
                     ->required()
-                    ->multiple()
+                    // ->multiple()
                     ->searchable()
                     ->preload(),
 
+                Select::make('type')
+                    ->options([
+                        'physical' => 'Físico',
+                        'digital' => 'Digital',
+                    ])
+                    ->label('Tipo de Produto')
+                    ->required(),
+
+                ColorPicker::make('color')
+                    ->label('Cor do Produto'),
+
+                Select::make('size')
+                    ->label('Tamanho do Produto')
+                    ->options([
+                        'XS',
+                        'S',
+                        'M',
+                        'L',
+                        'XL',
+                    ])
+                    ->label('Tipo de Produto')
+                    ->required(),
+
+                TextInput::make('weight')
+                    ->label('Peso do Produto (em gramas)')
+                    ->suffix('g')
+                    ->numeric()
+                    ->default(0)
+                    ->required(),
 
                 RichEditor::make('description')
                     ->label('Descrição do Produto')
@@ -57,7 +89,18 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->label('Nome do Produto'),
+
+                TextColumn::make('price')
+                    ->label('Preço'),
+
+
+                TextColumn::make('type')
+                    ->label('Tipo do Produto')
+                    ->badge(),
+
+
             ])
             ->filters([
                 //
