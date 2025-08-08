@@ -1,7 +1,7 @@
 <div>
 
     <div class="bg-slate-400">
-        <p>OLa mundo</p>
+        @livewire('products-section')
     </div>
 
     {{-- Care about people's approval and you will be their prisoner. --}}
