@@ -6,6 +6,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('landing_page');
 
+Route::get('/aaa', function () {
+
+    dd(
+        session()->get('cart')
+
+    );
+});
+
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

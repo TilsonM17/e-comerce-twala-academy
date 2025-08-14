@@ -63,3 +63,10 @@
         </div>
     </div>
 </nav>
+
+
+<script>
+    window.addEventListener('cart-added', (event) => {
+           console.log('Cart item added:', event.detail[0].cart);
+    });
+</script>

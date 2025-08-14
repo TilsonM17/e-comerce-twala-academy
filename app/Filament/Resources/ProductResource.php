@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\CategoryProducts;
@@ -48,7 +49,7 @@ class ProductResource extends Resource
                     ->preload(),
 
                 Select::make('type')
-                    ->options([
+                    ->options(options: [
                         'physical' => 'Físico',
                         'digital' => 'Digital',
                     ])
@@ -81,6 +82,12 @@ class ProductResource extends Resource
                     ->label('Descrição do Produto')
                     ->required(),
 
+
+                SpatieMediaLibraryFileUpload::make('logo')
+                    ->label('Imagens do Produto')
+                    ->multiple()
+                    ->image()
+                    ->collection('logo_produtos')
 
             ]);
     }
